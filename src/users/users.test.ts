@@ -159,7 +159,7 @@ test('post /users - email duplicado', () => {
     })
     .then(response => {
       expect(response.status).toBe(400)
-      expect(response.body.message).toContain('E11000 duplicate key')
+      expect(response.body.errors[0].message).toContain('E11000 duplicate key')
     })
     .catch(fail)
 })
