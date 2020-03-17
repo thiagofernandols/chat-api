@@ -4,7 +4,7 @@
   "description": "Chat API",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc -b && nodemon .\\dist\\main.js",
+    "dev": "tsc -b && nodemon ./dist/main.js",
     "build": "tsc -b",
     "watch:compiler": "tsc -w",
     "test": "ts-node jest.startup.ts"
