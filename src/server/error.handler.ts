@@ -4,15 +4,22 @@ export const handleError = (err, res, next) => {
       message: err.message
     }
   }
+  
+  let messages: any[] = []
+  
   switch (err.name) {
     case 'MongoError':
       if (err.code === 11000) {
         err.statusCode = 400
       }
+      messages.push({ message: err.message })
+      err.toJSON = () => ({
+        message: 'MongoError while processing your request',
+        errors: messages
+      })
       break
     case 'ValidationError':
       err.statusCode = 400
-      const messages: any[] = []
       for (let name in err.errors) {
         messages.push({ message: err.errors[name].message })
       }
