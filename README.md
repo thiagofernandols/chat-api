@@ -23,4 +23,4 @@ Build
 npm run build
 ```
 
-> Para o funcionamento correto, a api precisa do **MongoDB** instalado.
+> OBSERVAÇÃO: Para o funcionamento correto, a api precisa do **MongoDB** instalado.
