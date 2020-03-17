@@ -45,14 +45,6 @@ test('get /historics', () => {
     }).catch(fail)
 })
 
-test('get /historics - not authorized', () => {
-  return request(address)
-    .get('/historics')
-    .then(response => {
-      expect(response.status).toBe(403)
-    }).catch(fail)
-})
-
 test('post /historics', () => {
   return request(address)
     .post('/historics')

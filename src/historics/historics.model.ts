@@ -9,6 +9,10 @@ export interface Historic extends mongoose.Document {
   dateMessage: Date
 }
 
+export interface HistoricModel extends mongoose.Model<Historic> {
+  findByChat(chat: mongoose.Schema.Types.ObjectId, projection?: string): Promise<Historic>
+}
+
 const historicSchema = new mongoose.Schema({
   chat: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,4 +34,8 @@ const historicSchema = new mongoose.Schema({
   }
 })
 
-export const Historic = mongoose.model<Historic>('Historic', historicSchema)
+historicSchema.statics.findByChat = function (chat: mongoose.Schema.Types.ObjectId, projection: string) {
+  return this.find({ chat }, projection).populate('user')
+}
+
+export const Historic = mongoose.model<Historic, HistoricModel>('Historic', historicSchema)

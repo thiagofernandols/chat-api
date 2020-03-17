@@ -22,14 +22,6 @@ test('get /users', () => {
     }).catch(fail)
 })
 
-test('get /users - not authorized', () => {
-  return request(address)
-    .get('/users')
-    .then(response => {
-      expect(response.status).toBe(403)
-    }).catch(fail)
-})
-
 test('post /users', () => {
   return request(address)
     .post('/users')
