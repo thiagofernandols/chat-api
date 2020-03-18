@@ -79,22 +79,6 @@ test('post /historics - chat id required', () => {
     .catch(fail)
 })
 
-test('post /historics - user id required', () => {
-  return request(address)
-    .post('/historics')
-    .set('Authorization', tokenAuth)
-    .send({
-      'chat': chatTest._id,
-      'message': 'Olá, tudo bem?'
-    })
-    .then(response => {
-      expect(response.status).toBe(400)
-      expect(response.body.errors).toBeInstanceOf(Array)
-      expect(response.body.errors[0].message).toContain('user')
-    })
-    .catch(fail)
-})
-
 test('get /historics/aaaaa - not found', () => {
   return request(address)
     .get('/historics/aaaaa')
